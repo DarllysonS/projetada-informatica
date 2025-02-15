@@ -19,7 +19,14 @@ public class Principal {
 
         //Removendo o funcionário João.
         funcionarios.removeIf((funcionario) -> funcionario.getNome().equals("João"));
+
+        //Exibindo os funcionários e suas innformações
+        funcionarios.forEach((funcionario) -> {
+            System.out.println(funcionario.toString());
+        });
     }
+
+
 
 
 }
