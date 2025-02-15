@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -38,10 +39,11 @@ public class Funcionario extends Pessoa{
 
     public String toString(){
         DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DecimalFormat salarioFormatado = new DecimalFormat("#,##0.00");
         return
                 "\nNome: " + getNome() +
                 "\nData de Nascimento: " + getDataNascimento().format(dataFormatada) +
-                "\nSalário: " +
+                "\nSalário: R$ " + salarioFormatado.format(getSalario()) +
                 "\nFunção: " + getFuncao();
     }
 }
