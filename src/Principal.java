@@ -21,12 +21,15 @@ public class Principal {
         funcionarios.removeIf((funcionario) -> funcionario.getNome().equals("João"));
 
         //Exibindo os funcionários e suas innformações
-        funcionarios.forEach((funcionario) -> {
+        funcionarios.forEach(funcionario -> {
             System.out.println(funcionario.toString());
         });
+
+        //Aumentando o salário em 10%
+        funcionarios.forEach(funcionario -> {
+            BigDecimal novoSalario = funcionario.getSalario().multiply(new BigDecimal("1.1"));
+            funcionario.setSalario(novoSalario);
+        });
+
     }
-
-
-
-
 }

@@ -29,10 +29,6 @@ public class Funcionario extends Pessoa{
         this.funcao = funcao;
     }
 
-    public void aumentarSalario(BigDecimal percentual){
-        this.salario = this.salario.add(this.salario.multiply(percentual));
-    }
-
     public int getIdade(){
         return LocalDate.now().getYear() - getDataNascimento().getYear();
     }
