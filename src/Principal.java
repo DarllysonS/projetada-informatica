@@ -1,6 +1,7 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,5 +46,10 @@ public class Principal {
         funcionarios.stream()
                 .filter(funcio -> funcio.getDataNascimento().getMonthValue() == 10 || funcio.getDataNascimento().getMonthValue() == 12)
                 .forEach(System.out::println);
+
+        //Imprimir o funcionário com maior idade
+        Funcionario maisVelho = funcionarios.stream().min(Comparator.comparing(Funcionario::getDataNascimento)).orElse(null);
+        System.out.println("\n\nFuncionário mais velho:\nNome: " + maisVelho.getNome() + "\nIdade: " + maisVelho.getIdade());
+
     }
 }
