@@ -2,6 +2,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Principal {
     public static void main(String[] args) {
@@ -30,6 +32,10 @@ public class Principal {
             BigDecimal novoSalario = funcionario.getSalario().multiply(new BigDecimal("1.1"));
             funcionario.setSalario(novoSalario);
         });
+
+        //Agrupando todos os funcionários por função
+        Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream().collect
+                (Collectors.groupingBy(Funcionario::getFuncao));
 
     }
 }
