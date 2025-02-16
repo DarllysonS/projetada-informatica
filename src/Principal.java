@@ -40,5 +40,10 @@ public class Principal {
             System.out.println("\nFunção: " + funcao);
             listaFuncionarios.forEach(System.out::println);
         });
+
+        //Imprimir os funcionários que fazem aniversário no mês 10 e 12.
+        funcionarios.stream()
+                .filter(funcio -> funcio.getDataNascimento().getMonthValue() == 10 || funcio.getDataNascimento().getMonthValue() == 12)
+                .forEach(System.out::println);
     }
 }
