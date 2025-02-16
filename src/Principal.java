@@ -23,9 +23,7 @@ public class Principal {
         funcionarios.removeIf((funcionario) -> funcionario.getNome().equals("João"));
 
         //Exibindo os funcionários e suas innformações
-        funcionarios.forEach(funcionario -> {
-            System.out.println(funcionario.toString());
-        });
+        funcionarios.forEach(System.out::println);
 
         //Aumentando o salário em 10%
         funcionarios.forEach(funcionario -> {
@@ -37,5 +35,10 @@ public class Principal {
         Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream().collect
                 (Collectors.groupingBy(Funcionario::getFuncao));
 
+        //Imprimindo os funcionários que foram agrupados por função
+        funcionariosPorFuncao.forEach((funcao, listaFuncionarios) -> {
+            System.out.println("\nFunção: " + funcao);
+            listaFuncionarios.forEach(System.out::println);
+        });
     }
 }
