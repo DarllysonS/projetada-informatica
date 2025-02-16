@@ -51,5 +51,7 @@ public class Principal {
         Funcionario maisVelho = funcionarios.stream().min(Comparator.comparing(Funcionario::getDataNascimento)).orElse(null);
         System.out.println("\n\nFuncionário mais velho:\nNome: " + maisVelho.getNome() + "\nIdade: " + maisVelho.getIdade());
 
+        //Imprimindo a lista de funcionário em ordem alfabpética
+        funcionarios.stream().sorted(Comparator.comparing(Funcionario::getNome)).forEach(System.out::println);
     }
 }
