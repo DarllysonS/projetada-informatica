@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -60,5 +61,12 @@ public class Principal {
         BigDecimal totalSalarios = funcionarios.stream().map(Funcionario::getSalario)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println("\n\nSalário Total: R$ " + salarioFormatado.format(totalSalarios));
+
+        //Imprindo quantos salários mínimos ganha cada funcionário
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+        funcionarios.forEach(funcionario ->{
+            BigDecimal qtdSalariosMinimos = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
+            System.out.println("\nNome: " + funcionario.getNome() + "\nSalários Mínimos: " + qtdSalariosMinimos);
+        });
     }
 }
