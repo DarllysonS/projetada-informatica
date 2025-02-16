@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class Principal {
     public static void main(String[] args) {
+        DecimalFormat salarioFormatado = new DecimalFormat("#,##0.00");
         List<Funcionario> funcionarios = new ArrayList<>();
         funcionarios.add(new Funcionario("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operador"));
         funcionarios.add(new Funcionario("João", LocalDate.of(1990, 5, 12), new BigDecimal("2284.88"), "Operador"));
@@ -53,5 +55,10 @@ public class Principal {
 
         //Imprimindo a lista de funcionário em ordem alfabpética
         funcionarios.stream().sorted(Comparator.comparing(Funcionario::getNome)).forEach(System.out::println);
+
+        //Imprimir o total dos salários dos funcionários.
+        BigDecimal totalSalarios = funcionarios.stream().map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println("\n\nSalário Total: R$ " + salarioFormatado.format(totalSalarios));
     }
 }
